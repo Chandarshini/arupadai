@@ -5,23 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arupadai Narthagi 2025 | Nandha Natyalaya</title>
 
-<meta name="description" content="Arupadai Narthagi 2025 at Nandha Natyalaya - Bharatanatyam event with workshops and performances">
-<meta name="keywords" content="Bharatanatyam, Dance, Arupadai Narthagi 2025, Nandha Natyalaya, Tamil Nadu, Cultural Event">
-
-<!-- Open Graph for social sharing -->
-<meta property="og:title" content="Arupadai Narthagi 2025 | Nandha Natyalaya">
-<meta property="og:description" content="Join the grand Bharatanatyam cultural event at Nandha Natyalaya.">
-<meta property="og:image" content="images/dance.png">
-<meta property="og:url" content="https://www.nandhanatyalaya.com">
-
 <style>
 :root {
   --primary-color: #800000;
   --secondary-color: #1b5e20;
   --bg-gradient-start: #fff8e1;
   --bg-gradient-end: #f8f5e9;
-  --font-tamil: 'Noto Serif Tamil', serif;
   --highlight-color: #c0ca33;
+  --font-tamil: 'Noto Serif Tamil', serif;
+  --font-english: 'Poppins', sans-serif;
 }
 
 body {
@@ -30,6 +22,24 @@ body {
   background: linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-end));
   color: #2e2722;
   overflow-x: hidden;
+}
+
+#englishBox {
+  font-family: var(--font-english);
+  font-size: 17px; /* increased for better readability */
+  line-height: 1.7;
+}
+
+#englishBox h3, 
+#englishBox h2, 
+#englishBox p, 
+#englishBox li {
+  font-family: var(--font-english);
+}
+
+#tamilBox {
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 /* Header */
@@ -46,9 +56,6 @@ header img.logo, header img.god {
   width: 60px;
   border-radius: 10px;
 }
-header img.logo { animation: fadeInLeft 1.2s ease; }
-header img.god { animation: fadeInRight 1.2s ease; }
-
 header .title {
   flex: 1;
   text-align: center;
@@ -57,12 +64,44 @@ header .title h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
   margin: 0;
-  letter-spacing: 1px;
 }
 header .title h2 {
   font-size: 1rem;
   margin: 0;
-  font-weight: 400;
+}
+
+/* Language Toggle */
+.lang-toggle {
+  text-align: center;
+  margin: 1rem 0;
+}
+.lang-toggle button {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  margin: 0 0.3rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.lang-toggle button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--highlight-color);
+}
+.lang-toggle button.active {
+  background: var(--highlight-color);
+  color: #2e2722;
+}
+
+/* Content Boxes */
+.content-box {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+.content-box.active {
+  display: block;
 }
 
 /* Hero */
@@ -107,7 +146,6 @@ main section {
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  animation: fadeUp 0.8s ease both;
 }
 h3 {
   text-align: center;
@@ -173,7 +211,7 @@ footer {
 }
 footer a { color: #ffe082; text-decoration: none; font-weight: bold; }
 
-/* Past Events Slideshow */
+/* Slideshow */
 .slideshow-container {
   position: relative;
   width: 100%;
@@ -190,18 +228,15 @@ footer a { color: #ffe082; text-decoration: none; font-weight: bold; }
   object-fit: contain;
   display: none;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 .slideshow-container img.active {
   display: block;
 }
 
 /* Animations */
-@keyframes fadeInLeft { from {opacity:0; transform:translateX(-30px);} to {opacity:1; transform:translateX(0);} }
-@keyframes fadeInRight { from {opacity:0; transform:translateX(30px);} to {opacity:1; transform:translateX(0);} }
-@keyframes fadeUp { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 @keyframes float { from {transform:translateY(0);} to {transform:translateY(-12px);} }
 @keyframes glow { from {text-shadow:0 0 5px var(--highlight-color);} to {text-shadow:0 0 20px var(--highlight-color);} }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
 /* Mobile */
 @media (min-width: 768px) {
@@ -209,9 +244,27 @@ footer a { color: #ffe082; text-decoration: none; font-weight: bold; }
 }
 @media (max-width: 480px) {
   .hero img { width: 95%; }
-  h3 { font-size: 1rem; }
   .register-btn { width: 90%; padding: 0.7rem; font-size: 0.9rem; }
   .sponsors { grid-template-columns: 1fr; }
+}
+
+.intro-line {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin: 0.8rem auto;
+  padding: 0.6rem;
+  animation: glowShower 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 8px #ffcc80, 0 0 15px #ffb74d;
+  letter-spacing: 1px;
+}
+
+@keyframes glowShower {
+  0% { text-shadow: 0 0 5px #ffcc80, 0 0 10px #ffb74d; }
+  50% { text-shadow: 0 0 15px #ffd54f, 0 0 30px #ffb300; }
+  100% { text-shadow: 0 0 10px #ffcc80, 0 0 20px #ffb74d; }
 }
 </style>
 </head>
@@ -227,154 +280,309 @@ footer a { color: #ffe082; text-decoration: none; font-weight: bold; }
   <img src="images/natrajar.jpg" alt="Lord Nataraja" class="god">
 </header>
 
-<div class="hero">
-  <img src="images/dance.png" alt="Bharatanatyam dancer performing" loading="lazy">
+<div class="lang-toggle">
+  <button id="btnTamil" class="active">தமிழ்</button>
+  <button id="btnEnglish">English</button>
 </div>
 
-<div class="countdown" id="countdown" aria-live="polite"></div>
+<!-- Tamil Section -->
+<div id="tamilBox" class="content-box active">
+  <div class="intro-container">
+  <div class="intro-line">✨ <span>நந்தா நாட்டியாலயாவின்</span> முதல் பணிமனைக்கு வரவேற்கிறோம் ✨</div>
+</div>
 
-<main>
-    <a href="REGISTER_LINK_HERE" class="register-btn" aria-label="Register for Arupadai Narthagi 2025">🌸 Register Now</a>
+  <div class="hero"><img src="images/dance.png" alt="Bharatanatyam"></div>
+  <div class="countdown" id="countdownTa"></div>
+  <main>
+    <a href="https://forms.gle/FajwgR2MdPW7CZi79" class="register-btn">🌸 பதிவு செய்யுங்கள்</a>
+    <section>
+      <h3>நிகழ்ச்சி அறிமுகம்</h3>
+      <p>பக்தியும் பாரம்பரிய நடனமும் இணையும் சிறப்பான நிகழ்ச்சியான “அறுபடை நர்த்தகி 2025” — இது புனிதமான சஷ்டி திருநாளை மையமாகக் கொண்டு நடத்தப்படும் ஆன்மிக நடன விழாவாகும்.</p>
+      <p style="text-align:center; font-weight:bold; color:#1b5e20;">
+  🌸 சிறந்த நடனக் கலைஞர்களுக்கு <strong>“அறுபடை நர்த்தகி 2025”</strong> பட்டம் வழங்கப்படும்.
+  </p>
+    </section>
 
-  <section>
-    <h3>🎭 நிகழ்ச்சி அறிமுகம் / Event Introduction</h3>
-    <p>பக்தியும் பாரம்பரிய நடனமும் இணையும் சிறப்பான நிகழ்ச்சியான “அறுபடை நர்த்தகி 2025” அறிவிக்கப்படுகிறது.</p>
-    <p>We are delighted to announce the grand cultural event “Arupadai Narthagi 2025”, a celebration of devotion and classical dance based on divine Murugar songs.</p>
-  </section>
+    <section>
+      <h3>🗓️ முக்கிய தேதிகள்</h3>
+      <ul>
+        <li>பயிற்சி நாள் – 09.11.2025 (ஞாயிறு)</li>
+        <li>நிகழ்ச்சி நாள் – 16.11.2025 (ஞாயிறு)</li>
+      </ul>
+    </section>
 
-  <section>
-    <h3>🗓️ முக்கிய தேதிகள் / Important Dates</h3>
-    <ul>
-      <li>பயிற்சி நாள் / Practice Day – 09.11.2025 (ஞாயிறு / Sunday)</li>
-      <li>பதிவு கடைசி நாள் / Last Date – 07.11.2025 (வெள்ளி / Friday)</li>
-      <li>முக்கிய நிகழ்ச்சி / Main Event – 16.11.2025 (ஞாயிறு / Sunday)</li>
-    </ul>
-  </section>
+    <section>
+      <h3>📸 கடந்த நிகழ்ச்சிகள்</h3>
+      <h2 style="text-align:center; font-size:24px; color:#5D3A00; font-weight:700; margin:15px 0;">
+  அறுபடை 2020
+</h2>
+      <div class="slideshow-container" id="slideshowTa1">
+        <img src="images/arupadai4.jpg" class="active">
+        <img src="images/arupadai5.jpg">
+        <img src="images/arupadai6.jpg">
+      </div>
+      <ul>
+          <li>ஆறு வார தீவிர பயிற்சி வகுப்புகள் நடத்தப்பட்டது.</li>
+  <li>ஒவ்வொரு நாளும் 20–30 நிமிடங்கள் பயிற்சி நடைபெற்று, மொத்தம் 42 நாட்கள் நடந்தது.</li>
+  <li>ஒவ்வொரு வாரத்திற்கும் மாணவர்களை கண்காணிக்க மேற்பார்வையாளர்கள் நியமிக்கப்பட்டனர்.</li>
+  <li>மேற்பார்வையாளர்கள் ஒவ்வொரு வாரத்திற்கும் வருகைப் பதிவை பராமரித்தனர்.</li>
+  <li>அனைத்து நிலை மாணவர்களும் உற்சாகமாக பங்கேற்றனர்.</li>
+  <li>தொடர்ந்து முழுமையாக பங்கேற்ற மாணவர்களுக்கு <strong>“அறுபடை 2020”</strong> பட்டம் வழங்கப்பட்டது.</li>
+      </ul>
+      <h2 style="text-align:center; font-size:24px; color:#5D3A00; font-weight:700; margin:15px 0;">
+  அறுபடை நர்த்தகி 2021
+</h2>
+      <div class="slideshow-container" id="slideshowTa2">
+        <img src="images/arupadai1.jpg" class="active">
+        <img src="images/arupadai2.jpg">
+        <img src="images/arupadai3.jpg">
+      </div>
+      <ul>
+          <li>ஒரு வாரம் தினமும் காலை 6.00 மணி முதல் 7.00 மணி வரை பயிற்சி நடைபெற்றது.</li>
+  <li>பயிற்சிகள் ஆன்லைனிலும் ஆஃப்லைனிலும் நடத்தப்பட்டன.</li>
+  <li>பயிற்சி <strong>கந்த சஷ்டி கவசம்</strong> பாடல்களை மையப்படுத்தியது.</li>
+  <li>மாணவர்களுக்கு தனிப்பயிற்சிக்காக பயிற்சி வீடியோக்களும் வழங்கப்பட்டன.</li>
+  <li>பயிற்சி வாரத்தில் கற்றதைக் காட்சிப்படுத்த ஒரு நாள் நிகழ்ச்சி ஏற்பாடு செய்யப்பட்டது.</li>
+  <li>மிகச்சிறப்பாகவும் பக்தியுடன் பங்கேற்ற மாணவர்களுக்கு <strong>“அறுபடை நர்த்தகி 2021”</strong> பட்டம் வழங்கப்பட்டது.</li>
+      </ul>
+    </section>
 
-  <!-- Past Events Slideshow -->
-  <section>
-    <h3>📸 கடந்த நிகழ்ச்சிகள் / Past Events</h3>
+    <section>
+      <h3>💰 பதிவு கட்டணம் மற்றும் உட்படுத்தப்பட்டவை</h3>
+      <p style="text-align:center; font-weight:bold; color:#1b5e20;">பதிவு கட்டணம்: ₹1,100/-</p>
+      <ul>
+         <li>நடனப் பயிற்சி மற்றும் பதிவு கட்டணம்</li>
+  <li>பங்கேற்பாளர் சான்றிதழ்</li>
+  <li>பாடல் CD மற்றும் பயிற்சி வீடியோக்கள்</li>
+  <li>மதிய உணவு மற்றும் சிற்றுண்டி</li>
+      </ul>
+    </section>
 
-    <p style="text-align:center; font-weight:bold;">Arupadai Task 2020</p>
-    <div class="slideshow-container" id="slideshow2020">
-      <img src="images/arupadai4.jpg" class="active" alt="Arupadai 2020-1">
-      <img src="images/arupadai5.jpg" alt="Arupadai 2020-2">
-      <img src="images/arupadai6.jpg" alt="Arupadai 2020-3">
-    </div>
-    <ul style="margin-top:0.5rem; line-height:1.6;">
-      <li>Six-week intensive practice sessions were conducted.</li>
-      <li>Students from all levels were encouraged to participate.</li>
-      <li>Dedicated supervisors guided and monitored every session.</li>
-      <li>Students who showed full dedication and attendance were honored with the title <strong>Arupadai 2020</strong>.</li>
-    </ul>
+    <section>
+      <h3>🕘 அட்டவணை</h3>
+      <p style="text-align:center; font-weight:bold; color:#1b5e20;">நிகழ்ச்சி நேரம்: காலை 9:00 – மாலை 5:00</p>
+      <ul>
+        <li>9.00 – 10.30 : முதல் பகுதி</li>
+        <li>10.30 – 10.45 : இடைவேளை</li>
+        <li>10.45 – 12.30 : இரண்டாம் பகுதி</li>
+        <li>12.30 – 1.30 : மதிய உணவு</li>
+        <li>1.30 – 3.00 : மதிய பகுதி</li>
+        <li>3.00 – 3.15 : இடைவேளை</li>
+        <li>3.15 – 5.00 : மாலை பகுதி</li>
+      </ul>
+    </section>
 
-    <p style="text-align:center; font-weight:bold; margin-top:1rem;">Arupadai Narthagi 2021</p>
-    <div class="slideshow-container" id="slideshow2021">
-      <img src="images/arupadai1.jpg" class="active" alt="Arupadai 2021-1">
-      <img src="images/arupadai2.jpg" alt="Arupadai 2021-2">
-      <img src="images/arupadai3.jpg" alt="Arupadai 2021-3">
-    </div>
-    <ul style="margin-top:0.5rem; line-height:1.6;">
-      <li>Early morning sessions were held both online and offline, focusing on <strong>Kantha Sasti Kavasam</strong>.</li>
-      <li>A one-day program was conducted to showcase the students’ talent.</li>
-      <li>Outstanding performers were awarded the title <strong>Arupadai Narthagi 2021</strong>.</li>
-    </ul>
-  </section>
+    <section>
+      <h3>🎶 திட்டம்</h3>
+      <ul>
+        <li>பதம்</li>
+        <li>கீர்த்தனை</li>
+        <li>காவடி சிந்து</li>
+      </ul>
+    </section>
 
-  <section>
-    <h3>💰 பதிவு விவரங்கள் / Registration Details</h3>
-    <ul>
-      <li>நடன பயிற்சி & பதிவு கட்டணம்</li>
-      <li>பங்கேற்பாளர் சான்றிதழ்</li>
-      <li>பாடல் CD & பயிற்சி வீடியோ</li>
-      <li>மதிய உணவு & சிற்றுண்டி</li>
-    </ul>
-  </section>
+    <section>
+      <h3>🤝 நன்கொடையாளர்கள்</h3>
+      <div class="sponsors">
+        <div class="sponsor"><strong>R. Kathirvel (CEO)</strong><br>Well Tech Control Systems 5/3, Masakkalipalayam Main Road,
+Dhanalakshmi Nagar,<br>Coimbatore - 641045</div>
+        <div class="sponsor"><strong>V. Dhivya</strong><br>Dhi Greens | Farm Fresh Fruits & Vegetables
+267, GV Residency Road, G.V. Residency, Uppilipalayam,
+<br>Coimbatore - 641028</div>
+        <div class="sponsor"><strong>K. Janarthan Reddy</strong><br>Jayanthi Catering<br>Peelamedu</div>
+      </div>
+    </section>
+  </main>
+</div>
 
-  <section>
-    <h3>🕘 அட்டவணை / Schedule</h3>
-    <ul>
-      <li>9.00 – 10.30 : முதல் பகுதி / Morning Session</li>
-      <li>10.30 – 10.45 : இடைவேளை / Coffee Break</li>
-      <li>10.45 – 12.30 : இரண்டாம் பகுதி / Mid-Morning</li>
-      <li>12.30 – 1.30 : மதிய உணவு / Lunch</li>
-      <li>1.30 – 3.00 : பிற்பகல் / Afternoon Session</li>
-      <li>3.00 – 3.15 : இடைவேளை / Coffee Break</li>
-      <li>3.15 – 5.00 : பிற்பகல் / Evening Session</li>
-    </ul>
-  </section>
+<!-- English Section -->
+<div id="englishBox" class="content-box">
+  <div class="intro-line">
+  ✨ Introducing 1st Workshop of <strong>NANDHA NATYALAYA</strong> ✨
+</div>
+  <div class="hero"><img src="images/dance.png" alt="Bharatanatyam"></div>
+  <div class="countdown" id="countdownEn"></div>
+  <main>
+    <a href="https://forms.gle/FajwgR2MdPW7CZi79" class="register-btn">🌸 Register Now</a>
 
-  <section>
-    <h3>🎶 திட்டம் / Project Theme</h3>
-    <ul>
-      <li>பதம் / Padam</li>
-      <li>கீர்த்தனை / Keerthanai</li>
-      <li>காவடி சிந்து / Kavadi Sindhu</li>
-    </ul>
-  </section>
+    <section>
+      <h3>Event Introduction</h3>
+      <p>We are delighted to announce the grand cultural event “Arupadai Narthagi 2025”, a celebration of devotion and classical dance dedicated to the sacred occasion of Sashti.</p>
+      <p style="text-align:center; font-weight:bold; color:#1b5e20;">
+🌸 Outstanding performers will be awarded the title <strong>“Arupadai Narthagi 2025.”</strong>
+</p>
+    </section>
 
-  <section>
-    <h3>🤝 நன்கொடையாளர்கள் / Sponsors</h3>
-    <div class="sponsors">
-      <div class="sponsor"><strong>R. Kathirvel (CEO)</strong><br>Well Tech Control Systems<br>Coimbatore</div>
-      <div class="sponsor"><strong>V. Dhivya</strong><br>Dhi Greens | Farm Fresh Fruits & Vegetables<br>Coimbatore</div>
-      <div class="sponsor"><strong>K. Janarthan Reddy</strong><br>Jayanthi Catering Service, Peelamedu</div>
-    </div>
-  </section>
-</main>
+    <section>
+      <h3>🗓️ Important Dates</h3>
+      <ul>
+        <li>Practice Day – 09.11.2025 (Sunday)</li>
+        <li>Main Event – 16.11.2025 (Sunday)</li>
+      </ul>
+    </section>
 
-<!-- Contact & Footer -->
+    <section>
+      <h3>📸 Past Events</h3>
+      <h2 style="text-align:center; font-size:24px; color:#5D3A00; font-weight:700; margin:15px 0;">
+  Arupadai 2020
+</h2>
+      <div class="slideshow-container" id="slideshowEn1">
+        <img src="images/arupadai4.jpg" class="active">
+        <img src="images/arupadai5.jpg">
+        <img src="images/arupadai6.jpg">
+      </div>
+      <ul>
+         <li>Six-week intensive practice sessions were held.</li>
+  <li>Each day’s session lasted 20–30 minutes, for a total of 42 days.</li>
+  <li>Supervisors were appointed to monitor students each week.</li>
+  <li>Attendance was maintained regularly by the assigned supervisors.</li>
+  <li>Students from all levels participated with great enthusiasm.</li>
+  <li>Dedicated and consistent students were honored with the title <strong>“Arupadai 2020.”</strong></li>
+      </ul>
+      <h2 style="text-align:center; font-size:24px; color:#5D3A00; font-weight:700; margin:15px 0;">
+  Arupadai Narthagi 2021
+</h2>
+      <div class="slideshow-container" id="slideshowEn2">
+        <img src="images/arupadai1.jpg" class="active">
+        <img src="images/arupadai2.jpg">
+        <img src="images/arupadai3.jpg">
+      </div>
+      <ul>
+       <li>Morning sessions were held daily for one week from 6:00 AM to 7:00 AM.</li>
+  <li>Classes were conducted in both online and offline modes.</li>
+  <li>The sessions focused on <strong>Kantha Sasti Kavasam</strong>.</li>
+  <li>Practice videos were provided to students for self-practice and revision.</li>
+  <li>A one-day program was organized to showcase the learnings from the practice sessions.</li>
+  <li>Outstanding and devoted performers were honored with the title <strong>“Arupadai Narthagi 2021.”</strong></li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>💰 Registration Fee & Inclusions</h3>
+      <p style="text-align:center; font-weight:bold; color:#1b5e20;">Registration Fee: ₹1,100/-</p>
+      <ul>
+        <li>Dance Practice & Registration Fee</li>
+  <li>Participant Certificate</li>
+  <li>CD Songs and Practice Videos</li>
+  <li>Lunch and Snacks</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>🕘 Schedule</h3>
+       <p style="text-align:center; font-weight:bold; color:#1b5e20;">Event Timing: 9:00 AM – 5:00 PM</p>
+      <ul>
+        <li>9.00 – 10.30 : Morning Session</li>
+        <li>10.30 – 10.45 : Coffee Break</li>
+        <li>10.45 – 12.30 : Mid-Morning Session</li>
+        <li>12.30 – 1.30 : Lunch</li>
+        <li>1.30 – 3.00 : Afternoon Session</li>
+        <li>3.00 – 3.15 : Coffee Break</li>
+        <li>3.15 – 5.00 : Evening Session</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>🎶 Project Theme</h3>
+      <ul>
+        <li>Padam</li>
+        <li>Keerthanai</li>
+        <li>Kavadi Sindhu</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>🤝 Sponsors</h3>
+      <div class="sponsors">
+        <div class="sponsor"><strong>R. Kathirvel (CEO)</strong><br>Well Tech Control Systems 5/3, Masakkalipalayam Main Road,
+Dhanalakshmi Nagar,<br>Coimbatore - 641045</div>
+        <div class="sponsor"><strong>V. Dhivya</strong><br>Dhi Greens | Farm Fresh Fruits & Vegetables
+267, GV Residency Road, G.V. Residency, Uppilipalayam,
+<br>Coimbatore - 641028</div>
+        <div class="sponsor"><strong>K. Janarthan Reddy</strong><br>Jayanthi Catering<br>Peelamedu</div>
+      </div>
+    </section>
+  </main>
+</div>
+
 <footer>
   <div style="text-align:center; margin-bottom:0.8rem;">
-    <h3 style="color:#ffeb3b; margin:0 0 0.5rem 0;">📞 தொடர்புக்கு / Contact Us</h3>
-    <p style="margin:0.2rem 0;">📍 நந்தா நாட்டியாலயா, கோயம்புத்தூர்</p>
-    <p style="margin:0.2rem 0;">📱 <a href="tel:+919003677550">+91 9003677550</a></p>
-    <p style="margin:0.2rem 0;">📧 <a href="mailto:nandhanatyalaya@gmail.com">nandhanatyalaya@gmail.com</a></p>
-    <p style="margin:0.2rem 0;">🌐 <a href="https://www.nandhanatyalaya.com" target="_blank" rel="noopener noreferrer">www.nandhanatyalaya.com</a></p>
+    <h3 style="color:#ffeb3b;">📞 Contact Us</h3>
+    <p>📍 Nandha Natyalaya, Coimbatore</p>
+    <p>📱 <a href="tel:+919003677550">+91 9003677550</a></p>
+    <p>📧 <a href="mailto:nandhanatyalayaj@gmail.com">nandhanatyalayaj@gmail.com</a></p>
   </div>
-  <div style="border-top:2px solid var(--secondary-color); padding-top:0.5rem; font-size:0.85rem; color:#fff;">
-    © 2025 Nandha Natyalaya – A School of Bharatanatyam & Oriental Music
-  </div>
+  <p>© 2025 Nandha Natyalaya – A School of Bharatanatyam & Oriental Music</p>
 </footer>
 
 <script>
-// Countdown Timer
-const cd = document.getElementById("countdown");
-const eventDate = new Date("Nov 16, 2025 09:00:00").getTime();
+// Countdown
+function countdownTimer(elementId, date, language) {
+  const el = document.getElementById(elementId);
+  const countDownDate = new Date(date).getTime();
 
-const countdownTimer = setInterval(() => {
-  const now = new Date().getTime();
-  const diff = eventDate - now;
+  const updateTimer = () => {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
 
-  if (diff <= 0) {
-    cd.innerHTML = "🌺 The Event Has Started! 🌺";
-    clearInterval(countdownTimer);
-    return;
-  }
+    if (distance < 0) {
+      el.innerHTML = (language === "ta")
+        ? "🌸 நிகழ்ச்சி இன்று நடைபெறுகிறது!"
+        : "🌸 The event is happening today!";
+      return;
+    }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-  cd.innerHTML = `⏳ <span>${days}</span> Days <span>${hours}</span> Hrs <span>${minutes}</span> Mins <span>${seconds}</span> Secs`;
-}, 1000);
+    el.innerHTML = (language === "ta")
+      ? `⏳ ${days} நாட்கள் ${hours} மணி ${minutes} நிமிடம் பாக்கி`
+      : `⏳ ${days} days ${hours} hours ${minutes} minutes left`;
+  };
 
-// Slideshow Function
-function initSlideshow(id) {
-  const container = document.getElementById(id);
-  const slides = container.querySelectorAll("img");
-  let index = 0;
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3000);
+  updateTimer(); // Show immediately
+  setInterval(updateTimer, 60000); // Update every minute
 }
-["slideshow2020","slideshow2021"].forEach(initSlideshow);
+
+// Tamil countdown
+countdownTimer("countdownTa", "Nov 16, 2025 09:00:00", "ta");
+
+// English countdown
+countdownTimer("countdownEn", "Nov 16, 2025 09:00:00", "en");
+
+// Slideshow
+function startSlideshow(id) {
+  const container = document.getElementById(id);
+  if (!container) return;
+  const imgs = container.getElementsByTagName("img");
+  let i = 0;
+  setInterval(() => {
+    imgs[i].classList.remove("active");
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add("active");
+  }, 2500);
+}
+["slideshowTa1","slideshowTa2","slideshowEn1","slideshowEn2"].forEach(startSlideshow);
+
+// Language Switch
+const btnTamil = document.getElementById('btnTamil');
+const btnEnglish = document.getElementById('btnEnglish');
+const tamilBox = document.getElementById('tamilBox');
+const englishBox = document.getElementById('englishBox');
+btnTamil.addEventListener('click', () => {
+  tamilBox.classList.add('active');
+  englishBox.classList.remove('active');
+  btnTamil.classList.add('active');
+  btnEnglish.classList.remove('active');
+});
+btnEnglish.addEventListener('click', () => {
+  englishBox.classList.add('active');
+  tamilBox.classList.remove('active');
+  btnEnglish.classList.add('active');
+  btnTamil.classList.remove('active');
+});
 </script>
 
 </body>
 </html>
-
-
