@@ -152,10 +152,6 @@
       box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     }
 
-    #countdownTa {
-  white-space: nowrap;
-}
-
     /* Sections */
     main section {
       background: #ffffff;
@@ -640,8 +636,8 @@
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       el.innerHTML = (language === "ta")
-        ? `⏳ ${days} நாட்கள் ${hours} மணி ${minutes} நிமிடம் ${seconds} விநாடி பாக்கி`
-        : `⏳ ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds left`;
+        ? `⏳ ${days} நா ${hours} மணி ${minutes} நி ${seconds} வி பாக்கி`
+        : `⏳ ${days} d ${hours} h ${minutes} m ${seconds} s left`;
     }
 
     updateTimer();
@@ -692,5 +688,6 @@
 </script>
 </body>
 </html>
+
 
 
