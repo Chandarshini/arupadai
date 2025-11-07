@@ -614,72 +614,78 @@
   </footer>
 
   <script>
-    // Countdown
-    function countdownTimer(elementId, date, language) {
-      const el = document.getElementById(elementId);
-      const countDownDate = new Date(date).getTime();
+  // Countdown function
+  function countdownTimer(elementId, dateString, language) {
+    const el = document.getElementById(elementId);
 
-      const updateTimer = () => {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
+    function updateTimer() {
+      const countDownDate = new Date(dateString).getTime();
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
 
-        if (distance < 0) {
-          el.innerHTML = (language === "ta")
-            ? "🌸 நிகழ்ச்சி இன்று நடைபெறுகிறது!"
-            : "🌸 The event is happening today!";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
+      if (distance <= 0) {
         el.innerHTML = (language === "ta")
-          ? `⏳ ${days} நாட்கள் ${hours} மணி ${minutes} நிமிடம் பாக்கி`
-          : `⏳ ${days} days ${hours} hours ${minutes} minutes left`;
-      };
+          ? "🌸 நிகழ்ச்சி இன்று நடைபெறுகிறது!"
+          : "🌸 The event is happening today!";
+        return;
+      }
 
-      updateTimer(); // Show immediately
-      setInterval(updateTimer, 60000); // Update every minute
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      el.innerHTML = (language === "ta")
+        ? `⏳ ${days} நாட்கள் ${hours} மணி ${minutes} நிமிடம் ${seconds} விநாடி பாக்கி`
+        : `⏳ ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds left`;
     }
 
-    // Tamil countdown
-    countdownTimer("countdownTa", "Nov 16, 2025 09:00:00", "ta");
+    updateTimer();
+    setInterval(updateTimer, 1000); // update every second
+  }
 
-    // English countdown
-    countdownTimer("countdownEn", "Nov 16, 2025 09:00:00", "en");
+  // Tamil countdown
+  countdownTimer("countdownTa", "2025/11/09 09:00:00", "ta");
 
-    // Slideshow
-    function startSlideshow(id) {
-      const container = document.getElementById(id);
-      if (!container) return;
-      const imgs = container.getElementsByTagName("img");
-      let i = 0;
-      setInterval(() => {
-        imgs[i].classList.remove("active");
-        i = (i + 1) % imgs.length;
-        imgs[i].classList.add("active");
-      }, 2500);
-    }
-    ["slideshowTa1", "slideshowTa2", "slideshowEn1", "slideshowEn2"].forEach(startSlideshow);
+  // English countdown
+  countdownTimer("countdownEn", "2025/11/09 09:00:00", "en");
 
-    // Language Switch
-    const btnTamil = document.getElementById('btnTamil');
-    const btnEnglish = document.getElementById('btnEnglish');
-    const tamilBox = document.getElementById('tamilBox');
-    const englishBox = document.getElementById('englishBox');
-    btnTamil.addEventListener('click', () => {
-      tamilBox.classList.add('active');
-      englishBox.classList.remove('active');
-      btnTamil.classList.add('active');
-      btnEnglish.classList.remove('active');
-    });
-    btnEnglish.addEventListener('click', () => {
-      englishBox.classList.add('active');
-      tamilBox.classList.remove('active');
-      btnEnglish.classList.add('active');
-      btnTamil.classList.remove('active');
-    });
-  </script>
+  // Slideshow
+  function startSlideshow(id) {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const imgs = container.getElementsByTagName("img");
+    let i = 0;
+    imgs[i].classList.add("active");
+    setInterval(() => {
+      imgs[i].classList.remove("active");
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add("active");
+    }, 2500);
+  }
+
+  ["slideshowTa1", "slideshowTa2", "slideshowEn1", "slideshowEn2"].forEach(startSlideshow);
+
+  // Language switch
+  const btnTamil = document.getElementById('btnTamil');
+  const btnEnglish = document.getElementById('btnEnglish');
+  const tamilBox = document.getElementById('tamilBox');
+  const englishBox = document.getElementById('englishBox');
+
+  btnTamil.addEventListener('click', () => {
+    tamilBox.classList.add('active');
+    englishBox.classList.remove('active');
+    btnTamil.classList.add('active');
+    btnEnglish.classList.remove('active');
+  });
+
+  btnEnglish.addEventListener('click', () => {
+    englishBox.classList.add('active');
+    tamilBox.classList.remove('active');
+    btnEnglish.classList.add('active');
+    btnTamil.classList.remove('active');
+  });
+</script>
 </body>
 </html>
+
